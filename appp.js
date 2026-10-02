@@ -31,7 +31,7 @@ app.get('/todos/:id', (req, res) => {
 // CREATE: POST /todos (with validation)
 app.post('/todos', (req, res) => {
     const { task, completed = false } = req.body;
-
+    
     // Validation requirement: task field must exist
     if (!task || typeof task !== 'string' || task.trim() === '') {
         return res.status(400).json({ error: 'The "task" field is required.' });
@@ -72,6 +72,6 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 3500;
 
-app.listen(PORT, () => {
+app.listen(PORT,'0.0.0.0', () => {
     console.log(`Server is listening on port ${PORT}`);
 });
